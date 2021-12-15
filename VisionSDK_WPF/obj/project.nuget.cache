@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "QrC2Tn617q6efKwvNRB51/zWv+g3SD1ci7EE8tLKcli4qjnWfOUJ/lao8Cj6DC9lQrfbUCE+KqNdXxo8FWonVQ==",
+  "dgSpecHash": "x1UpZt7spajSxcFIuq3NSRfAvWd+CzljI+0QIhlP/DB4l+KWXewG0hmBAijPPxRGO98uvO/8KZf7XgQR7GYa1A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\song\\RiderProjects\\VisionSDK_WPF\\VisionSDK_WPF\\VisionSDK_WPF.csproj",
+  "projectFilePath": "D:\\Sources\\RiderProjects\\VisionSDK_WPF\\VisionSDK_WPF\\VisionSDK_WPF.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\song\\.nuget\\packages\\materialdesigncolors\\2.0.5-ci16-ci16\\materialdesigncolors.2.0.5-ci16-ci16.nupkg.sha512",
-    "C:\\Users\\song\\.nuget\\packages\\materialdesignthemes\\4.4.0-ci16-ci16\\materialdesignthemes.4.4.0-ci16-ci16.nupkg.sha512"
+    "C:\\Users\\js.song_laservall\\.nuget\\packages\\materialdesigncolors\\2.0.5-ci16-ci16\\materialdesigncolors.2.0.5-ci16-ci16.nupkg.sha512",
+    "C:\\Users\\js.song_laservall\\.nuget\\packages\\materialdesignthemes\\4.4.0-ci16-ci16\\materialdesignthemes.4.4.0-ci16-ci16.nupkg.sha512"
   ],
   "logs": []
 }

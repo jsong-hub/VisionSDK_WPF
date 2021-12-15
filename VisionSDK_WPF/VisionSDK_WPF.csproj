@@ -17,4 +17,8 @@
       <Reference Include="System.Windows.Forms" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\VisionSDK_WPF.Core\VisionSDK_WPF.Core.csproj" />
+    </ItemGroup>
+
 </Project>

@@ -8,11 +8,12 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
         <ListView
-            ItemsSource="{Binding Items}">
+            ItemsSource="{Binding Path=Items, Mode=TwoWay,
+                  NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn
-                        DisplayMemberBinding="{Binding Name}"
+                         DisplayMemberBinding="{Binding Name}"
                         Header="Name" />
                     <GridViewColumn
                         DisplayMemberBinding="{Binding Resolution}"

@@ -26,7 +26,7 @@ namespace VisionSDK_WPF.Viewmodels
                 }
             }
             
-            _ucImageListViewModel.RefreshImageList();
+            // _ucImageListViewModel.RefreshImageList();
         }
     }
 }
