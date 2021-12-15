@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Windows.Input;
-using System.Windows.Media.Imaging;
+using System.Windows.Forms.VisualStyles;
+using Accessibility;
 using VisionSDK_WPF.Common;
 using VisionSDK_WPF.Models;
 
@@ -19,12 +16,22 @@ namespace VisionSDK_WPF.Viewmodels
 
         public ucImageListViewModel()
         {
-            Items = new ObservableCollection<ImageListModel>();
+            // Items = new ObservableCollection<ImageListModel>();
+            // Test();
         }
         
         public static List<string> ImageFileList { get; set; }
 
-        public ObservableCollection<ImageListModel> Items { get; }
+        private ObservableCollection<ImageListModel> _items = null;
+        public ObservableCollection<ImageListModel> Items
+        {
+            get { return _items ??= new ObservableCollection<ImageListModel>(); }
+            set
+            {
+                _items = value;
+                OnPropertyChanged(nameof(Items));
+            }
+        }
 
 
         public void GetImageFiles(string folderPath)
@@ -38,17 +45,35 @@ namespace VisionSDK_WPF.Viewmodels
                     ImageFileList.Add(fileName);
                     
                     Bitmap src = new Bitmap(fileName);
+
+                    ImageListModel data = new ImageListModel();
+                    data.Format = Path.GetExtension(fileName);
+                    data.Resolution = src.Width + "x" + src.Height;
+                    data.Name = Path.GetFileNameWithoutExtension(fileName);
                     
-                    Items.Add(new ImageListModel()
-                    {
-                        Format = Path.GetExtension(fileName),
-                        Resolution = src.Width + "x" + src.Height,
-                        Name = Path.GetFileNameWithoutExtension(fileName)
-                    });
+                    Items.Add(data);
+
+                    // Items.Add(new ImageListModel()
+                    // {
+                    //     Format = Path.GetExtension(fileName),
+                    //     Resolution = src.Width + "x" + src.Height,
+                    //     Name = Path.GetFileNameWithoutExtension(fileName)
+                    // });
                 }
             }
         }
 
+        public void Test()
+        {
+            ImageListModel data = new ImageListModel();
+            data.Format = ".jpg";
+            data.Name = "test";
+            data.Resolution = "120x100";
+            data.IsSelected = false;
+            
+            Items.Add(data);
+        }
+        
         public bool? IsAllItemsSelected
         {
             get
@@ -74,17 +99,17 @@ namespace VisionSDK_WPF.Viewmodels
             }
         }
 
-        public void RefreshImageList()
-        {
-            foreach (var image in Items)
-            {
-                image.PropertyChanged += (sender, args) =>
-                {
-                    if (args.PropertyName == nameof(ImageListModel.IsSelected))
-                        OnPropertyChanged(nameof(IsAllItemsSelected));
-                };
-            }
-        }
+        // public void RefreshImageList()
+        // {
+        //     foreach (var image in Items)
+        //     {
+        //         image.PropertyChanged += (sender, args) =>
+        //         {
+        //             if (args.PropertyName == nameof(ImageListModel.IsSelected))
+        //                 OnPropertyChanged(nameof(IsAllItemsSelected));
+        //         };
+        //     }
+        // }
         
         private static ObservableCollection<ImageListModel> CreateData(string fileName)
         {

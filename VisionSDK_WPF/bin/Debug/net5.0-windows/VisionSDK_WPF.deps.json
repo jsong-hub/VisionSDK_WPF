@@ -9,7 +9,8 @@
       "VisionSDK_WPF/1.0.0": {
         "dependencies": {
           "MaterialDesignColors": "2.0.5-ci16-ci16",
-          "MaterialDesignThemes": "4.4.0-ci16-ci16"
+          "MaterialDesignThemes": "4.4.0-ci16-ci16",
+          "VisionSDK_WPF.Core": "1.0.0"
         },
         "runtime": {
           "VisionSDK_WPF.dll": {}
