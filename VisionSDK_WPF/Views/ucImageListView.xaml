@@ -3,26 +3,60 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:VisionSDK_WPF.Views"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <ListView
-            ItemsSource="{Binding Path=Items, Mode=TwoWay,
-                  NotifyOnSourceUpdated=True, NotifyOnTargetUpdated=True}">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn
-                         DisplayMemberBinding="{Binding Name}"
-                        Header="Name" />
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding Resolution}"
-                        Header="Resolution" />
-                    <GridViewColumn
-                        DisplayMemberBinding="{Binding Size}"
-                        Header="Size" />
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="110" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid Row="0">
+            <materialDesign:ColorZone
+                Mode="PrimaryLight"
+                Padding="16"
+                VerticalAlignment="Stretch">
+                <StackPanel
+                    Orientation="Vertical">
+                    <DockPanel LastChildFill="False">
+                        <ToggleButton HorizontalAlignment="Left"
+                                      Style="{DynamicResource MaterialDesignHamburgerToggleButton}" 
+                                      DockPanel.Dock="Left"/>
+                        <Grid/>
+                        <Button
+                            Style="{StaticResource MaterialDesignIconForegroundButton}"
+                            DockPanel.Dock="Right"
+                            Click="SelectFolderPathButton_OnClick"
+                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                            <materialDesign:PackIcon
+                                Kind="Search" />
+                        </Button>
+                    </DockPanel>
+                    <TextBlock 
+                        VerticalAlignment="Bottom"
+                        Margin="16 8 0 0"
+                        FontSize="15"
+                        Text="File Path" />
+                </StackPanel>
+            </materialDesign:ColorZone>
+        </Grid>
+        <Grid Row="1">
+            <ListView Name="ImageListView">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn
+                             DisplayMemberBinding="{Binding Name}"
+                            Header="Name" />
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding Resolution}"
+                            Header="Resolution" />
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding Size}"
+                            Header="Size" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
     </Grid>
 </UserControl>
