@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Windows.Data;
 using System.Windows.Forms.VisualStyles;
 using Accessibility;
 using VisionSDK_WPF.Common;
@@ -14,10 +16,14 @@ namespace VisionSDK_WPF.Viewmodels
     public class ucImageListViewModel : CommonBase
     {
 
-        public ucImageListViewModel()
+        public ucImageListViewModel(string path)
         {
             // Items = new ObservableCollection<ImageListModel>();
-            // Test();
+            Test();
+            // if (path != null)
+            // {
+            //     GetImageFiles(path);
+            // }
         }
         
         public static List<string> ImageFileList { get; set; }
@@ -33,6 +39,13 @@ namespace VisionSDK_WPF.Viewmodels
             }
         }
 
+        private int num = 0;
+        private CollectionViewSource ImageListViewSource { get; set; }
+
+        public ICollectionView BindingCollection
+        {
+            get { return ImageListViewSource.View; }
+        }
 
         public void GetImageFiles(string folderPath)
         {
@@ -51,7 +64,8 @@ namespace VisionSDK_WPF.Viewmodels
                     data.Resolution = src.Width + "x" + src.Height;
                     data.Name = Path.GetFileNameWithoutExtension(fileName);
                     
-                    Items.Add(data);
+                    GSingleton<ObservableCollection<ImageListModel>>.Instance().Add(data);
+                    //Items.Add(data);
 
                     // Items.Add(new ImageListModel()
                     // {
@@ -61,6 +75,8 @@ namespace VisionSDK_WPF.Viewmodels
                     // });
                 }
             }
+            
+            Items = GSingleton<ObservableCollection<ImageListModel>>.Instance();
         }
 
         public void Test()

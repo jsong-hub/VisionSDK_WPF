@@ -9,16 +9,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="MaterialDesignColors" Version="2.0.5-ci16-ci16" />
-      <PackageReference Include="MaterialDesignThemes" Version="4.4.0-ci16-ci16" />
-    </ItemGroup>
-
-    <ItemGroup>
       <Reference Include="System.Windows.Forms" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\VisionSDK_WPF.Core\VisionSDK_WPF.Core.csproj" />
+      <PackageReference Include="MaterialDesignColors" Version="2.0.5-ci16-ci16" />
+      <PackageReference Include="MaterialDesignThemes" Version="4.4.0-ci16-ci16" />
     </ItemGroup>
 
 </Project>

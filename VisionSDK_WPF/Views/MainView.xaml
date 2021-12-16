@@ -7,90 +7,20 @@
              xmlns:local="clr-namespace:VisionSDK_WPF.Views"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
-<Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="110" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <Grid Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="400" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="300" />
-            </Grid.ColumnDefinitions>
-            <Grid Column="0">
-                <materialDesign:ColorZone
-                    Mode="PrimaryLight"
-                    Padding="16"
-                    VerticalAlignment="Stretch">
-                    <StackPanel
-                        Orientation="Vertical">
-                        <DockPanel LastChildFill="False">
-                            <ToggleButton HorizontalAlignment="Left"
-                                          Style="{DynamicResource MaterialDesignHamburgerToggleButton}" 
-                                          DockPanel.Dock="Left"/>
-                            <Grid/>
-                            <Button
-                                Style="{StaticResource MaterialDesignIconForegroundButton}"
-                                DockPanel.Dock="Right"
-                                Command="{Binding SelectFolderCommand}"
-                                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
-                                <materialDesign:PackIcon
-                                    Kind="Search" />
-                            </Button>
-                        </DockPanel>
-                        <TextBlock 
-                            VerticalAlignment="Bottom"
-                            Margin="16 8 0 0"
-                            FontSize="15"
-                            Text="File Path" />
-                    </StackPanel>
-                </materialDesign:ColorZone>
-            </Grid>
-            <Grid Column="1">
-                <materialDesign:ColorZone
-                    Mode="PrimaryMid"
-                    Padding="16"
-                    VerticalAlignment="Stretch">
-                    <StackPanel
-                        Orientation="Horizontal">
-                        <TextBlock
-                            VerticalAlignment="Center"
-                            Margin="16 0 0 0"
-                            Text="Material Design In XAML Toolkit" />
-                    </StackPanel>
-                </materialDesign:ColorZone>
-            </Grid>
-            <Grid Column="2">
-                <materialDesign:ColorZone
-                    Mode="PrimaryDark"
-                    Padding="16"
-                    VerticalAlignment="Stretch">
-                    <StackPanel
-                        Orientation="Horizontal">
-                        <TextBlock
-                            VerticalAlignment="Center"
-                            Margin="16 0 0 0"
-                            Text="Material Design In XAML Toolkit" />
-                    </StackPanel>
-                </materialDesign:ColorZone>
-            </Grid>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="300" />
+        </Grid.ColumnDefinitions>
+        <Grid Column="0">
+            <local:ucImageListView />
         </Grid>
-        <Grid Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="400" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="300" />
-            </Grid.ColumnDefinitions>
-            <Grid Column="0">
-                <local:ucImageListView/>
-            </Grid>
-            <Grid Column="1">
-                
-            </Grid>
-            <Grid Column="2">
-                
-            </Grid>
+        <Grid Column="1">
+            <local:ucImageDisplayView/>
+        </Grid>
+        <Grid Column="2">
+            <local:ucAlgorithmListView/>
         </Grid>
     </Grid>
 </UserControl>

@@ -16,19 +16,5 @@ namespace VisionSDK_WPF
         {
             InitializeComponent();
         }
-
-        private void SearchDialog_OnClick(object sender, RoutedEventArgs e)
-        {
-            var fbd = new FolderBrowserDialog();
-            FolderPath = null;
-            if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                FolderPath = fbd.SelectedPath;
-            }
-            else
-            {
-                MessageBox.Show("Folder did not selected.");
-            }
-        }
     }
 }
