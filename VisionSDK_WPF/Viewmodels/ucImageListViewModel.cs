@@ -33,6 +33,7 @@ namespace VisionSDK_WPF.Viewmodels
         }
 
         public ICommand SelectFolderCommand => new RelayCommand(SelectFolder);
+        public ICommand SelectFileCommand => new RelayCommand(SelectFile);
 
         public void SelectFolder(object o)
         {
@@ -47,11 +48,21 @@ namespace VisionSDK_WPF.Viewmodels
             }
         }
 
-        public void GetImageFiles(string selectedPath)
+        public void SelectFile(object o)
         {
-            List<ImageListModel> ImageList = new List<ImageListModel>();
+            using (var ofd = new OpenFileDialog())
+            {
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    string selectedFile = ofd.FileName;
+                    GetImageFile(selectedFile);
+                }
+            }
+        }
 
-            foreach (var fileName in Directory.GetFiles(selectedPath))
+        public void GetImageFiles(string folderPath)
+        {
+            foreach (var fileName in Directory.GetFiles(folderPath))
             {
                 if (Regex.IsMatch(fileName, @".jpg|.png|.bmp|.JPG|.PNG|.BMP|.JPEG|.jpeg$"))
                 {
@@ -68,6 +79,24 @@ namespace VisionSDK_WPF.Viewmodels
             }
 
             Items = GSingleton<ObservableCollection<ImageListModel>>.Instance();
+        }
+
+        public void GetImageFile(string filePath)
+        {
+            if (Regex.IsMatch(filePath, @".jpg|.png|.bmp|.JPG|.PNG|.BMP|.JPEG|.jpeg$"))
+            {
+                Bitmap src = new Bitmap(filePath);
+
+                ImageListModel data = new ImageListModel();
+                data.Format = Path.GetExtension(filePath);
+                data.Resolution = src.Width + "x" + src.Height;
+                data.Name = Path.GetFileNameWithoutExtension(filePath);
+                data.Size = FormatBytes(new FileInfo(filePath).Length);
+
+                GSingleton<ObservableCollection<ImageListModel>>.Instance().Add(data);
+       
+                // Items.Add(data);
+            }
         }
         
         public string FormatBytes(long bytes)
