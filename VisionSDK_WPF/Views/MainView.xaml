@@ -14,7 +14,9 @@
             <ColumnDefinition Width="300" />
         </Grid.ColumnDefinitions>
         <Grid Column="0">
-            <local:ucImageListView />
+            <Grid Row="0">
+                <local:ucImageListView />
+            </Grid>
         </Grid>
         <Grid Column="1">
             <local:ucImageDisplayView/>

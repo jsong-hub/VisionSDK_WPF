@@ -21,59 +21,5 @@ namespace VisionSDK_WPF.Views
 
             DataContext = new ucImageListViewModel();
         }
-
-        public List<ImageListModel> ImageList { get; set; }
-
-        private void SelectFileButton_OnClick(object sender, RoutedEventArgs e)
-        {
-        }
-        
-        private void SelectFolderButton_OnClick(object sender, RoutedEventArgs e)
-        {
-            using (var fbd = new FolderBrowserDialog())
-            {
-                if (fbd.ShowDialog() == DialogResult.OK)
-                {
-                    GetImageFiles(fbd.SelectedPath);
-                }
-            }
-        }
-        
-        public void GetImageFiles(string folderPath)
-        {
-            ImageList = new List<ImageListModel>();
-            
-            foreach (var fileName in Directory.GetFiles(folderPath))
-            {
-                if (Regex.IsMatch(fileName, @".jpg|.png|.bmp|.JPG|.PNG|.BMP|.JPEG|.jpeg$"))
-                {
-                    Bitmap src = new Bitmap(fileName);
-
-                    ImageListModel data = new ImageListModel();
-                    data.Format = Path.GetExtension(fileName);
-                    data.Resolution = src.Width + "x" + src.Height;
-                    data.Name = Path.GetFileNameWithoutExtension(fileName);
-                    
-                    GSingleton<ObservableCollection<ImageListModel>>.Instance().Add(data);
-                    
-                    ImageList.Add(new ImageListModel()
-                    {
-                        Format = Path.GetExtension(fileName),
-                        IsSelected = false,
-                        Name = Path.GetFileNameWithoutExtension(fileName),
-                        Resolution = src.Width + "x" + src.Height,
-                        Size = new FileInfo(fileName).Length.ToString()
-                    });
-                }
-            }
-
-            ImageListView.ItemsSource = ImageList;
-        }
-
-
-        private void ImageListViewItems_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var selectedIndex = ImageListView.SelectedIndex;
-        }
     }
 }

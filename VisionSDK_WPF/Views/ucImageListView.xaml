@@ -21,13 +21,13 @@
                     Orientation="Vertical">
                     <DockPanel LastChildFill="False">
                         <ToggleButton HorizontalAlignment="Left"
-                                      Style="{DynamicResource MaterialDesignHamburgerToggleButton}" 
-                                      DockPanel.Dock="Left"/>
-                        <Grid/>
+                                      Style="{DynamicResource MaterialDesignHamburgerToggleButton}"
+                                      DockPanel.Dock="Left" />
+                        <Grid />
                         <Button
                             Style="{StaticResource MaterialDesignIconForegroundButton}"
                             DockPanel.Dock="Right"
-                            Click="SelectFileButton_OnClick"
+                            Command="{Binding SelectFileCommand}"
                             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
                             <materialDesign:PackIcon
                                 Kind="FilePlus" />
@@ -35,13 +35,13 @@
                         <Button
                             Style="{StaticResource MaterialDesignIconForegroundButton}"
                             DockPanel.Dock="Right"
-                            Click="SelectFolderButton_OnClick"
+                            Command="{Binding SelectFolderCommand}"
                             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
                             <materialDesign:PackIcon
                                 Kind="FolderPlus" />
                         </Button>
                     </DockPanel>
-                    <TextBlock 
+                    <TextBlock
                         VerticalAlignment="Bottom"
                         Margin="16 8 0 0"
                         FontSize="15"
@@ -50,11 +50,11 @@
             </materialDesign:ColorZone>
         </Grid>
         <Grid Row="1">
-            <ListView Name="ImageListView" SelectionChanged="ImageListViewItems_OnSelectionChanged">
+            <ListView ItemsSource="{Binding Items}">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn
-                             DisplayMemberBinding="{Binding Name}"
+                            DisplayMemberBinding="{Binding Name}"
                             Header="Name" />
                         <GridViewColumn
                             DisplayMemberBinding="{Binding Resolution}"
@@ -62,6 +62,9 @@
                         <GridViewColumn
                             DisplayMemberBinding="{Binding Size}"
                             Header="Size" />
+                        <GridViewColumn
+                            DisplayMemberBinding="{Binding Format}"
+                            Header="Format" />
                     </GridView>
                 </ListView.View>
             </ListView>

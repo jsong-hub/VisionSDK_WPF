@@ -8,5 +8,7 @@ namespace VisionSDK_WPF.Models
 
         public readonly ObservableCollection<ImageListModel> ImageListCollectionModel =
             new ObservableCollection<ImageListModel>();
+
+        public string SelectedFolderPath = null;
     }
 }
