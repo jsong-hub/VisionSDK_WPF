@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.Windows.Input;
 using VisionSDK_WPF.Common;
+using VisionSDK_WPF.Models;
 
 namespace VisionSDK_WPF.Viewmodels
 {
@@ -11,25 +12,6 @@ namespace VisionSDK_WPF.Viewmodels
 
         public MainViewModel()
         {
-            _ucImageListViewModel = new ucImageListViewModel(null);
-        }
-
-        public ICommand SelectFolderCommand => new RelayCommand(ExecuteSelectFolder);
-
-        private void ExecuteSelectFolder(object o)
-        {
-            using (var fbd = new FolderBrowserDialog())
-            {
-                if (fbd.ShowDialog() == DialogResult.OK)
-                {
-                    // _ucImageListViewModel.GetImageFiles(fbd.SelectedPath);
-                    _ucImageListViewModel = new ucImageListViewModel(fbd.SelectedPath);
-                }
-            }
-
-            // _ucImageListViewModel.Test();
-            
-            // _ucImageListViewModel.RefreshImageList();
         }
     }
 }

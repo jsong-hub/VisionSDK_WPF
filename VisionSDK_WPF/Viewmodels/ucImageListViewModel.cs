@@ -1,13 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Text.RegularExpressions;
-using System.Windows.Data;
+using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
-using Accessibility;
+using System.Windows.Input;
 using VisionSDK_WPF.Common;
 using VisionSDK_WPF.Models;
 
@@ -15,23 +14,17 @@ namespace VisionSDK_WPF.Viewmodels
 {
     public class ucImageListViewModel : CommonBase
     {
-
-        public ucImageListViewModel(string path)
+        public ucImageListViewModel()
         {
-            // Items = new ObservableCollection<ImageListModel>();
-            Test();
-            // if (path != null)
-            // {
-            //     GetImageFiles(path);
-            // }
+            // Test();
+            // GetImageFiles();
         }
-        
-        public static List<string> ImageFileList { get; set; }
 
-        private ObservableCollection<ImageListModel> _items = null;
+        private ObservableCollection<ImageListModel> _items;
+
         public ObservableCollection<ImageListModel> Items
         {
-            get { return _items ??= new ObservableCollection<ImageListModel>(); }
+            get => _items;
             set
             {
                 _items = value;
@@ -39,104 +32,58 @@ namespace VisionSDK_WPF.Viewmodels
             }
         }
 
-        private int num = 0;
-        private CollectionViewSource ImageListViewSource { get; set; }
+        public ICommand SelectFolderCommand => new RelayCommand(SelectFolder);
 
-        public ICollectionView BindingCollection
+        public void SelectFolder(object o)
         {
-            get { return ImageListViewSource.View; }
+            using (var fbd = new FolderBrowserDialog())
+            {
+                if (fbd.ShowDialog() == DialogResult.OK)
+                {
+                    GSingleton<ObjectManager>.Instance().SelectedFolderPath = fbd.SelectedPath;
+                    string selectedPath = GSingleton<ObjectManager>.Instance().SelectedFolderPath;
+                    GetImageFiles(selectedPath);
+                }
+            }
         }
 
-        public void GetImageFiles(string folderPath)
+        public void GetImageFiles(string selectedPath)
         {
-            ImageFileList = new List<string>();
+            List<ImageListModel> ImageList = new List<ImageListModel>();
 
-            foreach (var fileName in Directory.GetFiles(folderPath))
+            foreach (var fileName in Directory.GetFiles(selectedPath))
             {
                 if (Regex.IsMatch(fileName, @".jpg|.png|.bmp|.JPG|.PNG|.BMP|.JPEG|.jpeg$"))
                 {
-                    ImageFileList.Add(fileName);
-                    
                     Bitmap src = new Bitmap(fileName);
 
                     ImageListModel data = new ImageListModel();
                     data.Format = Path.GetExtension(fileName);
                     data.Resolution = src.Width + "x" + src.Height;
                     data.Name = Path.GetFileNameWithoutExtension(fileName);
-                    
-                    GSingleton<ObservableCollection<ImageListModel>>.Instance().Add(data);
-                    //Items.Add(data);
+                    data.Size = FormatBytes(new FileInfo(fileName).Length);
 
-                    // Items.Add(new ImageListModel()
-                    // {
-                    //     Format = Path.GetExtension(fileName),
-                    //     Resolution = src.Width + "x" + src.Height,
-                    //     Name = Path.GetFileNameWithoutExtension(fileName)
-                    // });
+                    GSingleton<ObservableCollection<ImageListModel>>.Instance().Add(data);
                 }
             }
-            
+
             Items = GSingleton<ObservableCollection<ImageListModel>>.Instance();
         }
-
-        public void Test()
-        {
-            ImageListModel data = new ImageListModel();
-            data.Format = ".jpg";
-            data.Name = "test";
-            data.Resolution = "120x100";
-            data.IsSelected = false;
-            
-            Items.Add(data);
-        }
         
-        public bool? IsAllItemsSelected
+        public string FormatBytes(long bytes)
         {
-            get
-            {
-                var selected = Items.Select(item => item.IsSelected).Distinct().ToList();
-                return selected.Count == 1 ? selected.Single() : (bool?) null;
-            }
-            set
-            {
-                if (value.HasValue)
-                {
-                    SelectAll(value.Value, Items);
-                    OnPropertyChanged();
-                }
-            }
-        }
-        
-        private static void SelectAll(bool select, IEnumerable<ImageListModel> models)
-        {
-            foreach (var model in models)
-            {
-                model.IsSelected = select;
-            }
-        }
+            const int scale = 1024;
+            string[] orders = new string[] { "GB", "MB", "KB", "Bytes" };
+            long max = (long)Math.Pow(scale, orders.Length - 1);
 
-        // public void RefreshImageList()
-        // {
-        //     foreach (var image in Items)
-        //     {
-        //         image.PropertyChanged += (sender, args) =>
-        //         {
-        //             if (args.PropertyName == nameof(ImageListModel.IsSelected))
-        //                 OnPropertyChanged(nameof(IsAllItemsSelected));
-        //         };
-        //     }
-        // }
-        
-        private static ObservableCollection<ImageListModel> CreateData(string fileName)
-        {
-            return new ObservableCollection<ImageListModel>
+            foreach (string order in orders)
             {
-                
-                new ImageListModel
-                {
+                if (bytes > max)
+                    return string.Format("{0:##.##} {1}", decimal.Divide(bytes, max), order);
 
-                }
-            };
+                max /= scale;
+            }
+            return "0 Bytes";
         }
     }
 }
