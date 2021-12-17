@@ -11,7 +11,7 @@ namespace VisionSDK_WPF.Viewmodels
 
         public MainViewModel()
         {
-            _ucImageListViewModel = new ucImageListViewModel(null);
+            _ucImageListViewModel = new ucImageListViewModel();
         }
 
         public ICommand SelectFolderCommand => new RelayCommand(ExecuteSelectFolder);
@@ -23,13 +23,8 @@ namespace VisionSDK_WPF.Viewmodels
                 if (fbd.ShowDialog() == DialogResult.OK)
                 {
                     // _ucImageListViewModel.GetImageFiles(fbd.SelectedPath);
-                    _ucImageListViewModel = new ucImageListViewModel(fbd.SelectedPath);
                 }
             }
-
-            // _ucImageListViewModel.Test();
-            
-            // _ucImageListViewModel.RefreshImageList();
         }
     }
 }

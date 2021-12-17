@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Forms;
 using VisionSDK_WPF.Common;
 using VisionSDK_WPF.Models;
@@ -18,12 +19,16 @@ namespace VisionSDK_WPF.Views
         {
             InitializeComponent();
 
-            // DataContext = new ucImageListViewModel(null);
+            DataContext = new ucImageListViewModel();
         }
 
         public List<ImageListModel> ImageList { get; set; }
 
-        private void SelectFolderPathButton_OnClick(object sender, RoutedEventArgs e)
+        private void SelectFileButton_OnClick(object sender, RoutedEventArgs e)
+        {
+        }
+        
+        private void SelectFolderButton_OnClick(object sender, RoutedEventArgs e)
         {
             using (var fbd = new FolderBrowserDialog())
             {
@@ -63,7 +68,12 @@ namespace VisionSDK_WPF.Views
             }
 
             ImageListView.ItemsSource = ImageList;
-            // Items = GSingleton<ObservableCollection<ImageListModel>>.Instance();
+        }
+
+
+        private void ImageListViewItems_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectedIndex = ImageListView.SelectedIndex;
         }
     }
 }

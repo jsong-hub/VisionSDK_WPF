@@ -27,10 +27,18 @@
                         <Button
                             Style="{StaticResource MaterialDesignIconForegroundButton}"
                             DockPanel.Dock="Right"
-                            Click="SelectFolderPathButton_OnClick"
+                            Click="SelectFileButton_OnClick"
                             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
                             <materialDesign:PackIcon
-                                Kind="Search" />
+                                Kind="FilePlus" />
+                        </Button>
+                        <Button
+                            Style="{StaticResource MaterialDesignIconForegroundButton}"
+                            DockPanel.Dock="Right"
+                            Click="SelectFolderButton_OnClick"
+                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                            <materialDesign:PackIcon
+                                Kind="FolderPlus" />
                         </Button>
                     </DockPanel>
                     <TextBlock 
@@ -42,7 +50,7 @@
             </materialDesign:ColorZone>
         </Grid>
         <Grid Row="1">
-            <ListView Name="ImageListView">
+            <ListView Name="ImageListView" SelectionChanged="ImageListViewItems_OnSelectionChanged">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn
