@@ -51,7 +51,7 @@
             </materialDesign:ColorZone>
         </Grid>
         <Grid Row="1">
-            <ListView ItemsSource="{Binding Items}" SelectedIndex="{Binding SelectedIndex}">
+            <ListView ItemsSource="{Binding ImageCollection}" SelectedIndex="{Binding SelectedIndex}">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn

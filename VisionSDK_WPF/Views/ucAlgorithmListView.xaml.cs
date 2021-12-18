@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using VisionSDK_WPF.Viewmodels;
 
 namespace VisionSDK_WPF.Views
 {
@@ -7,6 +8,8 @@ namespace VisionSDK_WPF.Views
         public ucAlgorithmListView()
         {
             InitializeComponent();
+
+            DataContext = new ucAlgorithmListViewModel();
         }
     }
 }
