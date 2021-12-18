@@ -19,11 +19,22 @@
                 Padding="16"
                 VerticalAlignment="Stretch">
                 <StackPanel
-                    Orientation="Horizontal">
+                    Orientation="Vertical">
+                    <DockPanel LastChildFill="False">
+                        <Button
+                            Style="{StaticResource MaterialDesignIconForegroundButton}"
+                            DockPanel.Dock="Right"
+                            ToolTip="Save File"
+                            Command="{Binding SaveFileCommand}"
+                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                            <materialDesign:PackIcon
+                                Kind="ContentSave" />
+                        </Button>
+                    </DockPanel>
                     <TextBlock
                         VerticalAlignment="Center"
                         Margin="16 0 0 0"
-                        Text="Material Design In XAML Toolkit" />
+                        Text="{Binding SelectedImageName}" />
                 </StackPanel>
             </materialDesign:ColorZone>
         </Grid>
