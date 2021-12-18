@@ -20,6 +20,8 @@ namespace VisionSDK_WPF.Viewmodels
             // GetImageFiles();
         }
 
+        private List<string> LoadedImageList = new List<string>();
+
         private ObservableCollection<ImageListModel> _items;
 
         public ObservableCollection<ImageListModel> Items
@@ -32,6 +34,19 @@ namespace VisionSDK_WPF.Viewmodels
             }
         }
 
+        public int _selectedIndex;
+
+        public int SelectedIndex
+        {
+            get => _selectedIndex;
+            set
+            {
+                _selectedIndex = value;
+                ChangeSelectedItemPath();
+                // OnPropertyChanged(nameof(SelectedIndex));
+            }
+        }
+
         public ICommand SelectFolderCommand => new RelayCommand(SelectFolder);
         public ICommand SelectFileCommand => new RelayCommand(SelectFile);
 
@@ -41,8 +56,8 @@ namespace VisionSDK_WPF.Viewmodels
             {
                 if (fbd.ShowDialog() == DialogResult.OK)
                 {
-                    GSingleton<ObjectManager>.Instance().SelectedFolderPath = fbd.SelectedPath;
-                    string selectedPath = GSingleton<ObjectManager>.Instance().SelectedFolderPath;
+                    // GSingleton<ObjectManager>.Instance().SelectedFolderPath = fbd.SelectedPath;
+                    string selectedPath = fbd.SelectedPath;
                     GetImageFiles(selectedPath);
                 }
             }
@@ -64,6 +79,8 @@ namespace VisionSDK_WPF.Viewmodels
         {
             foreach (var fileName in Directory.GetFiles(folderPath))
             {
+                // GSingleton<ObjectManager>.Instance().LoadedImageFullPath.Add(fileName);
+                LoadedImageList.Add(fileName);
                 if (Regex.IsMatch(fileName, @".jpg|.png|.bmp|.JPG|.PNG|.BMP|.JPEG|.jpeg$"))
                 {
                     Bitmap src = new Bitmap(fileName);
@@ -73,16 +90,18 @@ namespace VisionSDK_WPF.Viewmodels
                     data.Resolution = src.Width + "x" + src.Height;
                     data.Name = Path.GetFileNameWithoutExtension(fileName);
                     data.Size = FormatBytes(new FileInfo(fileName).Length);
-
-                    GSingleton<ObservableCollection<ImageListModel>>.Instance().Add(data);
+                    
+                    GSingleton<ObjectManager>.Instance().ImageListCollectionModel.Add(data);
                 }
             }
 
-            Items = GSingleton<ObservableCollection<ImageListModel>>.Instance();
+            Items = GSingleton<ObjectManager>.Instance().ImageListCollectionModel;
         }
 
         public void GetImageFile(string filePath)
         {
+            // GSingleton<ObjectManager>.Instance().LoadedImageFullPath.Add(filePath);
+            LoadedImageList.Add(filePath);
             if (Regex.IsMatch(filePath, @".jpg|.png|.bmp|.JPG|.PNG|.BMP|.JPEG|.jpeg$"))
             {
                 Bitmap src = new Bitmap(filePath);
@@ -93,12 +112,18 @@ namespace VisionSDK_WPF.Viewmodels
                 data.Name = Path.GetFileNameWithoutExtension(filePath);
                 data.Size = FormatBytes(new FileInfo(filePath).Length);
 
-                GSingleton<ObservableCollection<ImageListModel>>.Instance().Add(data);
+                GSingleton<ObjectManager>.Instance().ImageListCollectionModel.Add(data);
        
                 // Items.Add(data);
             }
         }
-        
+
+        private void ChangeSelectedItemPath()
+        {
+            GSingleton<ObjectManager>.Instance().SelectedImageModel.SelectedImagePath 
+                = LoadedImageList[SelectedIndex];
+        }
+
         public string FormatBytes(long bytes)
         {
             const int scale = 1024;

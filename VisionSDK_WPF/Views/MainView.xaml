@@ -9,14 +9,12 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="400" />
+            <ColumnDefinition Width="450" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="300" />
         </Grid.ColumnDefinitions>
         <Grid Column="0">
-            <Grid Row="0">
-                <local:ucImageListView />
-            </Grid>
+            <local:ucImageListView />
         </Grid>
         <Grid Column="1">
             <local:ucImageDisplayView/>
