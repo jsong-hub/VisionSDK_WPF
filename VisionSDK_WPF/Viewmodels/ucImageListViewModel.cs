@@ -114,14 +114,17 @@ namespace VisionSDK_WPF.Viewmodels
 
         private void ChangeSelectedItemPath()
         {
-            GSingleton<ObjectManager>.Instance().SelectedImageModel.SelectedImagePath 
-                = LoadedImageList[SelectedIndex];
+            // GSingleton<ObjectManager>.Instance().SelectedImageModel.SelectedImagePath 
+            //     = LoadedImageList[SelectedIndex];
+            GSingleton<ObjectManager>.Instance().TargetImageModel.OriginBitmap 
+                = new Bitmap(LoadedImageList[SelectedIndex]);
+            GSingleton<ObjectManager>.Instance().TargetImageModel.IsApplied = false;
         }
 
         public string FormatBytes(long bytes)
         {
             const int scale = 1024;
-            string[] orders = new string[] { "GB", "MB", "KB", "Bytes" };
+            string[] orders = { "GB", "MB", "KB", "Bytes" };
             long max = (long)Math.Pow(scale, orders.Length - 1);
 
             foreach (string order in orders)

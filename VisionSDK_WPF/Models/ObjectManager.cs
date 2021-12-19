@@ -11,9 +11,7 @@ namespace VisionSDK_WPF.Models
         public readonly ObservableCollection<ImageListModel> ImageListCollectionModel =
             new ObservableCollection<ImageListModel>();
 
-        public readonly SelectedImageModel SelectedImageModel = new SelectedImageModel();
-
-        public Bitmap SelectedBitmap;
+        public readonly TargetImageModel TargetImageModel = new TargetImageModel();
 
         public string SelectedFolderPath = null;
     }

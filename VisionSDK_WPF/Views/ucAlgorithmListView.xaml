@@ -17,6 +17,7 @@
             <RowDefinition Height="110" />
             <RowDefinition Height="*" />
             <RowDefinition Height="250" />
+            <RowDefinition Height="40" />
         </Grid.RowDefinitions>
         <Grid Row="0">
             <materialDesign:ColorZone
@@ -51,6 +52,9 @@
                               CanContentScroll="True">
                 </ScrollViewer>
             </DockPanel>
+        </Grid>
+        <Grid Row="3">
+            <Button Content="APPLY" Command="{Binding ApplyCommand}"/>
         </Grid>
     </Grid>
 </UserControl>
