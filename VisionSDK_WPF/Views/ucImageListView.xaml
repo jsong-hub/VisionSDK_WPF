@@ -23,10 +23,10 @@
                         <ToggleButton HorizontalAlignment="Left"
                                       Style="{DynamicResource MaterialDesignHamburgerToggleButton}"
                                       DockPanel.Dock="Left" />
-                        <Grid />
                         <Button
                             Style="{StaticResource MaterialDesignIconForegroundButton}"
                             DockPanel.Dock="Right"
+                            ToolTip="Load Image File"
                             Command="{Binding SelectFileCommand}"
                             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
                             <materialDesign:PackIcon
@@ -35,6 +35,7 @@
                         <Button
                             Style="{StaticResource MaterialDesignIconForegroundButton}"
                             DockPanel.Dock="Right"
+                            ToolTip="Load Image Files from Folder"
                             Command="{Binding SelectFolderCommand}"
                             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
                             <materialDesign:PackIcon
@@ -50,7 +51,7 @@
             </materialDesign:ColorZone>
         </Grid>
         <Grid Row="1">
-            <ListView ItemsSource="{Binding Items}">
+            <ListView ItemsSource="{Binding ImageCollection}" SelectedIndex="{Binding SelectedIndex}">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn
