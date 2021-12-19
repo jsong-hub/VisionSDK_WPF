@@ -28,8 +28,7 @@
                     Orientation="Horizontal">
                     <TextBlock
                         VerticalAlignment="Center"
-                        Margin="16 0 0 0"
-                        Text="Material Design In XAML Toolkit" />
+                        Margin="16 0 0 0" />
                 </StackPanel>
             </materialDesign:ColorZone>
         </Grid>

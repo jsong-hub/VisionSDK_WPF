@@ -10,6 +10,8 @@
         "dependencies": {
           "Accord": "3.8.2-alpha",
           "Accord.Imaging": "3.8.2-alpha",
+          "Accord.Math": "3.8.2-alpha",
+          "Accord.Statistics": "3.8.2-alpha",
           "MaterialDesignColors": "2.0.5-ci16-ci16",
           "MaterialDesignThemes": "4.4.0-ci16-ci16"
         },
