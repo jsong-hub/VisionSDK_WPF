@@ -22,15 +22,15 @@ namespace VisionSDK_WPF.Viewmodels
 
         private List<string> LoadedImageList = new List<string>();
 
-        private ObservableCollection<ImageListModel> _items;
+        private ObservableCollection<ImageListModel> _imageCollection;
 
-        public ObservableCollection<ImageListModel> Items
+        public ObservableCollection<ImageListModel> ImageCollection
         {
-            get => _items;
+            get => _imageCollection;
             set
             {
-                _items = value;
-                OnPropertyChanged(nameof(Items));
+                _imageCollection = value;
+                OnPropertyChanged(nameof(ImageCollection));
             }
         }
 
@@ -92,7 +92,7 @@ namespace VisionSDK_WPF.Viewmodels
                 }
             }
 
-            Items = GSingleton<ObjectManager>.Instance().ImageListCollectionModel;
+            ImageCollection = GSingleton<ObjectManager>.Instance().ImageListCollectionModel;
         }
 
         public void GetImageFile(string filePath)
@@ -114,14 +114,17 @@ namespace VisionSDK_WPF.Viewmodels
 
         private void ChangeSelectedItemPath()
         {
-            GSingleton<ObjectManager>.Instance().SelectedImageModel.SelectedImagePath 
-                = LoadedImageList[SelectedIndex];
+            // GSingleton<ObjectManager>.Instance().SelectedImageModel.SelectedImagePath 
+            //     = LoadedImageList[SelectedIndex];
+            GSingleton<ObjectManager>.Instance().TargetImageModel.OriginBitmap 
+                = new Bitmap(LoadedImageList[SelectedIndex]);
+            GSingleton<ObjectManager>.Instance().TargetImageModel.IsApplied = false;
         }
 
         public string FormatBytes(long bytes)
         {
             const int scale = 1024;
-            string[] orders = new string[] { "GB", "MB", "KB", "Bytes" };
+            string[] orders = { "GB", "MB", "KB", "Bytes" };
             long max = (long)Math.Pow(scale, orders.Length - 1);
 
             foreach (string order in orders)

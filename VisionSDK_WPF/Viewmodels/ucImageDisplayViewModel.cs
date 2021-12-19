@@ -13,21 +13,22 @@ namespace VisionSDK_WPF.Viewmodels
 {
     public class ucImageDisplayViewModel : CommonBase
     {
-        public SelectedImageModel SelectedImageModel { get; set; }
+        public TargetImageModel TargetImageModel { get; set; }
         public DataConverter DataConverter { get; set; }
 
         public ucImageDisplayViewModel()
         {
             this.DataConverter = new DataConverter();
-            
-            SelectedImageModel = GSingleton<ObjectManager>.Instance().SelectedImageModel;
-            SelectedImageModel.PropertyChanged += SelectedImageModelOnPropertyChanged;
+
+            TargetImageModel = GSingleton<ObjectManager>.Instance().TargetImageModel;
+            TargetImageModel.PropertyChanged += SelectedImageModelOnPropertyChanged;
         }
 
         private void SelectedImageModelOnPropertyChanged(object? sender, PropertyChangedEventArgs e)
         {
-            SelectedImageSource = DataConverter.BitmapToImageSource(new Bitmap(SelectedImageModel.SelectedImagePath));
-            SelectedImageName = Path.GetFileName(SelectedImageModel.SelectedImagePath);
+            SelectedImageSource 
+                = DataConverter.BitmapToImageSource(TargetImageModel.IsApplied ? TargetImageModel.ProcessedBitmap : TargetImageModel.OriginBitmap);
+            SelectedImageName = Path.GetFileName(TargetImageModel.SelectedImagePath);
         }
 
         private BitmapImage _selectedImageSource;
@@ -52,6 +53,11 @@ namespace VisionSDK_WPF.Viewmodels
                 _selectedImageName = value;
                 OnPropertyChanged(nameof(SelectedImageName));
             }
+        }
+
+        private void SetSelectedImageInObjectManager()
+        {
+            
         }
 
         public ICommand SaveFileCommand => new RelayCommand(SaveFile);

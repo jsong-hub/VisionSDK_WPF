@@ -68,3 +68,10 @@ D:\Sources\RiderProjects\VisionSDK_WPF\VisionSDK_WPF\obj\Debug\net5.0-windows\Vi
 D:\Sources\RiderProjects\VisionSDK_WPF\VisionSDK_WPF\obj\Debug\net5.0-windows\ref\VisionSDK_WPF.dll
 D:\Sources\RiderProjects\VisionSDK_WPF\VisionSDK_WPF\obj\Debug\net5.0-windows\VisionSDK_WPF.pdb
 D:\Sources\RiderProjects\VisionSDK_WPF\VisionSDK_WPF\obj\Debug\net5.0-windows\VisionSDK_WPF.genruntimeconfig.cache
+C:\Users\song\RiderProjects\VisionSDK_WPF\VisionSDK_WPF\bin\Debug\net5.0-windows\Accord.dll.config
+C:\Users\song\RiderProjects\VisionSDK_WPF\VisionSDK_WPF\bin\Debug\net5.0-windows\Accord.dll
+C:\Users\song\RiderProjects\VisionSDK_WPF\VisionSDK_WPF\bin\Debug\net5.0-windows\Accord.Imaging.dll
+C:\Users\song\RiderProjects\VisionSDK_WPF\VisionSDK_WPF\bin\Debug\net5.0-windows\Accord.Math.Core.dll
+C:\Users\song\RiderProjects\VisionSDK_WPF\VisionSDK_WPF\bin\Debug\net5.0-windows\Accord.Math.dll
+C:\Users\song\RiderProjects\VisionSDK_WPF\VisionSDK_WPF\bin\Debug\net5.0-windows\Accord.Statistics.dll
+C:\Users\song\RiderProjects\VisionSDK_WPF\VisionSDK_WPF\obj\Debug\net5.0-windows\VisionSDK_WPF_Content.g.cs
