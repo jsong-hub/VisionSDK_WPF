@@ -80,11 +80,8 @@ namespace VisionSDK_WPF.Viewmodels
                 LoadedImageList.Add(fileName);
                 if (Regex.IsMatch(fileName, @".jpg|.png|.bmp|.JPG|.PNG|.BMP|.JPEG|.jpeg$"))
                 {
-                    Bitmap src = new Bitmap(fileName);
-
                     ImageListModel data = new ImageListModel();
                     data.Format = Path.GetExtension(fileName);
-                    data.Resolution = src.Width + "x" + src.Height;
                     data.Name = Path.GetFileNameWithoutExtension(fileName);
                     data.Size = FormatBytes(new FileInfo(fileName).Length);
                     
@@ -100,11 +97,8 @@ namespace VisionSDK_WPF.Viewmodels
             LoadedImageList.Add(filePath);
             if (Regex.IsMatch(filePath, @".jpg|.png|.bmp|.JPG|.PNG|.BMP|.JPEG|.jpeg$"))
             {
-                Bitmap src = new Bitmap(filePath);
-
                 ImageListModel data = new ImageListModel();
                 data.Format = Path.GetExtension(filePath);
-                data.Resolution = src.Width + "x" + src.Height;
                 data.Name = Path.GetFileNameWithoutExtension(filePath);
                 data.Size = FormatBytes(new FileInfo(filePath).Length);
 

@@ -62,13 +62,14 @@
                     <ListView.View>
                         <GridView>
                             <GridViewColumn
-                                DisplayMemberBinding="{Binding Name}"/>
+                                DisplayMemberBinding="{Binding Name}"
+                                Header="Name"/>
                             <GridViewColumn
-                                DisplayMemberBinding="{Binding Resolution}"/>
+                                DisplayMemberBinding="{Binding Size}"
+                                Header="Size"/>
                             <GridViewColumn
-                                DisplayMemberBinding="{Binding Size}"/>
-                            <GridViewColumn
-                                DisplayMemberBinding="{Binding Format}"/>
+                                DisplayMemberBinding="{Binding Format}"
+                                Header="Format"/>
                         </GridView>
                     </ListView.View>
                 </ListView>

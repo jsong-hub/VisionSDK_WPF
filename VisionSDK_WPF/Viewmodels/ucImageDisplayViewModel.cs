@@ -64,18 +64,24 @@ namespace VisionSDK_WPF.Viewmodels
 
         private void SaveFile(object o)
         {
-            string saveFileName = null;
-            
-            using (var sfd = new SaveFileDialog())
+            if (GSingleton<ObjectManager>.Instance().TargetImageModel.ProcessedBitmap != null)
             {
-                sfd.InitialDirectory = @"C:";
-                sfd.Filter = "JPEG File(*.jpg)|*.jpg|Bitmap File(*.bmp)|*.bmp|PNG File(*.png)|*.png";
-
-                if (sfd.ShowDialog() == DialogResult.OK)
+                using (var sfd = new SaveFileDialog())
                 {
-                    saveFileName = sfd.FileName;
-                    //TODO: 알고리즘이 적용된 이미지를 ObjectManager에서 관리하여 저장해야함.
+                    sfd.InitialDirectory = @"D:";
+                    sfd.Filter = "PNG File(*.png)|*.png|Bitmap File(*.bmp)|*.bmp|JPEG File(*.jpg)|*.jpg";
+
+                    if (sfd.ShowDialog() == DialogResult.OK)
+                    {
+                        var saveFileName = sfd.FileName;
+                        var targetImage = GSingleton<ObjectManager>.Instance().TargetImageModel.ProcessedBitmap;
+                        targetImage.Save(saveFileName);
+                    }
                 }
+            }
+            else
+            {
+                MessageBox.Show("Any processing did not applied.");
             }
         }
     }
