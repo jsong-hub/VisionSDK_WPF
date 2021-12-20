@@ -7,6 +7,11 @@
              xmlns:local="clr-namespace:VisionSDK_WPF.Views"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ControlTemplate x:Key="NonScrollableListView" TargetType="ListView">
+            <ItemsPresenter />
+        </ControlTemplate>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="110" />
@@ -51,24 +56,23 @@
             </materialDesign:ColorZone>
         </Grid>
         <Grid Row="1">
-            <ListView ItemsSource="{Binding ImageCollection}" SelectedIndex="{Binding SelectedIndex}">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn
-                            DisplayMemberBinding="{Binding Name}"
-                            Header="Name" />
-                        <GridViewColumn
-                            DisplayMemberBinding="{Binding Resolution}"
-                            Header="Resolution" />
-                        <GridViewColumn
-                            DisplayMemberBinding="{Binding Size}"
-                            Header="Size" />
-                        <GridViewColumn
-                            DisplayMemberBinding="{Binding Format}"
-                            Header="Format" />
-                    </GridView>
-                </ListView.View>
-            </ListView>
+            <ScrollViewer materialDesign:ScrollViewerAssist.IsAutoHideEnabled="True"
+                          CanContentScroll="True">
+                <ListView ItemsSource="{Binding ImageCollection}" SelectedIndex="{Binding SelectedIndex}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn
+                                DisplayMemberBinding="{Binding Name}"/>
+                            <GridViewColumn
+                                DisplayMemberBinding="{Binding Resolution}"/>
+                            <GridViewColumn
+                                DisplayMemberBinding="{Binding Size}"/>
+                            <GridViewColumn
+                                DisplayMemberBinding="{Binding Format}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </ScrollViewer>
         </Grid>
     </Grid>
 </UserControl>
