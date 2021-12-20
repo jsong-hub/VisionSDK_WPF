@@ -108,8 +108,6 @@ namespace VisionSDK_WPF.Viewmodels
 
         private void ChangeSelectedItemPath()
         {
-            // GSingleton<ObjectManager>.Instance().SelectedImageModel.SelectedImagePath 
-            //     = LoadedImageList[SelectedIndex];
             GSingleton<ObjectManager>.Instance().TargetImageModel.IsApplied = false;
             GSingleton<ObjectManager>.Instance().TargetImageModel.OriginBitmap 
                 = new Bitmap(LoadedImageList[SelectedIndex]);

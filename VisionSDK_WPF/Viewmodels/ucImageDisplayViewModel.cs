@@ -26,6 +26,17 @@ namespace VisionSDK_WPF.Viewmodels
 
         private void SelectedImageModelOnPropertyChanged(object? sender, PropertyChangedEventArgs e)
         {
+            if (TargetImageModel.IsApplied)
+            {
+                SelectedImageSource = DataConverter.BitmapToImageSource(TargetImageModel.ProcessedBitmap);
+                TargetImageResolution = TargetImageModel.ProcessedBitmap.Width + "x" + TargetImageModel.ProcessedBitmap.Height;
+            }
+            else
+            {
+                SelectedImageSource = DataConverter.BitmapToImageSource(TargetImageModel.OriginBitmap);
+                TargetImageResolution =
+                    TargetImageModel.OriginBitmap.Width + "x" + TargetImageModel.OriginBitmap.Height;
+            }
             SelectedImageSource 
                 = DataConverter.BitmapToImageSource(TargetImageModel.IsApplied ? TargetImageModel.ProcessedBitmap : TargetImageModel.OriginBitmap);
             SelectedImageName = Path.GetFileName(TargetImageModel.SelectedImagePath);
@@ -52,6 +63,18 @@ namespace VisionSDK_WPF.Viewmodels
             {
                 _selectedImageName = value;
                 OnPropertyChanged(nameof(SelectedImageName));
+            }
+        }
+
+        private string _targetImageResolution;
+
+        public string TargetImageResolution
+        {
+            get => _targetImageResolution;
+            set
+            {
+                _targetImageResolution = value;
+                OnPropertyChanged(nameof(TargetImageResolution));
             }
         }
 
