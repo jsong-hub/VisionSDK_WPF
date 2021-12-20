@@ -40,22 +40,6 @@
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
           "dependencies": {
-            "Accord": {
-              "target": "Package",
-              "version": "[3.8.2-alpha, )"
-            },
-            "Accord.Imaging": {
-              "target": "Package",
-              "version": "[3.8.2-alpha, )"
-            },
-            "Accord.Math": {
-              "target": "Package",
-              "version": "[3.8.2-alpha, )"
-            },
-            "Accord.Statistics": {
-              "target": "Package",
-              "version": "[3.8.2-alpha, )"
-            },
             "MaterialDesignColors": {
               "target": "Package",
               "version": "[2.0.5-ci16-ci16, )"
@@ -63,6 +47,14 @@
             "MaterialDesignThemes": {
               "target": "Package",
               "version": "[4.4.0-ci16-ci16, )"
+            },
+            "OpenCvSharp4": {
+              "target": "Package",
+              "version": "[4.5.3.20211207, )"
+            },
+            "OpenCvSharp4.Windows": {
+              "target": "Package",
+              "version": "[4.5.3.20211207, )"
             }
           },
           "imports": [

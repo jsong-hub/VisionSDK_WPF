@@ -11,6 +11,8 @@ using Accord.Imaging;
 using Accord.Imaging.Filters;
 using VisionSDK_WPF.Converters;
 using VisionSDK_WPF.Models;
+using OpenCvSharp;
+using OpenCvSharp.Extensions;
 
 namespace VisionSDK_WPF.Viewmodels
 {
@@ -60,15 +62,36 @@ namespace VisionSDK_WPF.Viewmodels
         
         private void Apply(object o)
         {
-            Bitmap inputImage = GSingleton<ObjectManager>.Instance().TargetImageModel.OriginBitmap;
-            // // Bitmap bmpData = inputImage.LockBits(new Rectangle(0, 0, inputImage.Width, inputImage.Height),
-            // //     ImageLockMode.ReadWrite, inputImage.PixelFormat);
-            // Bitmap outputImage = Grayscale.CommonAlgorithms.BT709.Apply(inputImage);
-            //
-            // GSingleton<ObjectManager>.Instance().TargetImageModel.ProcessedBitmap = new Bitmap(outputImage);
-            // GSingleton<ObjectManager>.Instance().TargetImageModel.IsApplied = true;
+            Mat inputMat = BitmapConverter.ToMat(GSingleton<ObjectManager>.Instance().TargetImageModel
+                .OriginBitmap);
+            Mat grayMat = new Mat();
+            Mat outputMat = new Mat();
+
+            PixelFormat pf;
+            switch (inputMat.Channels())
+            {
+                case 1:
+                    pf = PixelFormat.Format8bppIndexed; break;
+                case 3:
+                    pf = PixelFormat.Format24bppRgb; break;
+                case 4:
+                    pf = PixelFormat.Format32bppArgb; break;
+                default:
+                    throw new ArgumentException("Number of channels must be 1, 3 or 4.", nameof(inputMat));
+            }
             
-            // inputImage.UnlockBits(bmpData);
+            if (pf == PixelFormat.Format8bppIndexed)
+            {
+                Cv2.Threshold(inputMat, outputMat, 0, 255, ThresholdTypes.Otsu);
+            }
+            else
+            {
+                
+            }
+
+            Bitmap outputImage = BitmapConverter.ToBitmap(outputMat);
+            GSingleton<ObjectManager>.Instance().TargetImageModel.IsApplied = true;
+            GSingleton<ObjectManager>.Instance().TargetImageModel.ProcessedBitmap = new Bitmap(outputImage);
         }
 
         private void LoadAlgorithmList()

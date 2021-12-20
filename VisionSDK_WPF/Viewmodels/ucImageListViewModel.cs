@@ -116,9 +116,9 @@ namespace VisionSDK_WPF.Viewmodels
         {
             // GSingleton<ObjectManager>.Instance().SelectedImageModel.SelectedImagePath 
             //     = LoadedImageList[SelectedIndex];
+            GSingleton<ObjectManager>.Instance().TargetImageModel.IsApplied = false;
             GSingleton<ObjectManager>.Instance().TargetImageModel.OriginBitmap 
                 = new Bitmap(LoadedImageList[SelectedIndex]);
-            GSingleton<ObjectManager>.Instance().TargetImageModel.IsApplied = false;
         }
 
         public string FormatBytes(long bytes)
