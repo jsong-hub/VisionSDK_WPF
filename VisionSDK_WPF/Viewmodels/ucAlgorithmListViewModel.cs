@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Runtime.Serialization;
 using System.Windows.Controls;
 using System.Windows.Input;
 using VisionSDK_WPF.Common;
@@ -10,6 +12,7 @@ using VisionSDK_WPF.Converters;
 using VisionSDK_WPF.Models;
 using OpenCvSharp;
 using OpenCvSharp.Extensions;
+using ObjectManager = VisionSDK_WPF.Models.ObjectManager;
 
 namespace VisionSDK_WPF.Viewmodels
 {
@@ -18,9 +21,11 @@ namespace VisionSDK_WPF.Viewmodels
         public TargetImageModel TargetImageModel { get; set; }
         public DataConverter DataConverter { get; set; }
         
+        public ImageProcessor ImageProcessor { get; set; }
+        
         public ucAlgorithmListViewModel()
         {
-
+            ImageProcessor = new ImageProcessor();
             AlgorithmCollection = new ObservableCollection<string>();
             LoadAlgorithmList();
         }
@@ -76,15 +81,41 @@ namespace VisionSDK_WPF.Viewmodels
                 default:
                     throw new ArgumentException("Number of channels must be 1, 3 or 4.", nameof(inputMat));
             }
-            
-            if (pf == PixelFormat.Format8bppIndexed)
+            switch (SelectedIndex)
             {
-                Cv2.Threshold(inputMat, outputMat, 0, 255, ThresholdTypes.Otsu);
+                case 0:
+                    outputMat = ImageProcessor.RunColorToGrayscale(inputMat);
+                    break;
+                case 1:
+                    //Threshold
+                    break;
+                case 2:
+                    outputMat = ImageProcessor.RunAdaptiveOtsuThreshold(inputMat);
+                    break;
+                case 3:
+                    //blur
+                    break;
+                case 4:
+                    //sharpen
+                    break;
+                case 5:
+                    outputMat = ImageProcessor.RunHoughCircleDetection(inputMat);
+                    break;
+                case 6:
+                    //3pointcircle
+                default:
+                    throw new ArgumentException("", nameof(SelectedIndex));
             }
-            else
-            {
-                
-            }
+            // if (pf == PixelFormat.Format8bppIndexed)
+            // {
+            //
+            //     
+            //     // Cv2.Threshold(inputMat, outputMat, 0, 255, ThresholdTypes.Otsu);
+            // }
+            // else
+            // {
+            //     
+            // }
 
             Bitmap outputImage = BitmapConverter.ToBitmap(outputMat);
             GSingleton<ObjectManager>.Instance().TargetImageModel.IsApplied = true;
@@ -101,11 +132,13 @@ namespace VisionSDK_WPF.Viewmodels
 
         enum EAlgorithms
         {
+            Grayscale,
             Threshold,
-            Otsu,
+            AdaptiveOtsu,
             GaussianBlur,
             Sharpen,
-            Grayscale
+            HoughCircleDetection,
+            ThreePointCircle
         }
     }
 }

@@ -34,7 +34,19 @@ namespace VisionSDK_WPF.Viewmodels
             }
         }
 
-        public int _selectedIndex;
+        private string _selectedFolderPath = "Folder Path";
+
+        public string SelectedFolderPath
+        {
+            get => _selectedFolderPath;
+            set
+            {
+                _selectedFolderPath = value;
+                OnPropertyChanged(nameof(SelectedFolderPath));
+            }
+        }
+
+        private int _selectedIndex;
 
         public int SelectedIndex
         {
@@ -111,6 +123,7 @@ namespace VisionSDK_WPF.Viewmodels
             GSingleton<ObjectManager>.Instance().TargetImageModel.IsApplied = false;
             GSingleton<ObjectManager>.Instance().TargetImageModel.OriginBitmap 
                 = new Bitmap(LoadedImageList[SelectedIndex]);
+            GSingleton<ObjectManager>.Instance().TargetImageModel.SelectedImagePath = LoadedImageList[SelectedIndex];
         }
 
         public string FormatBytes(long bytes)

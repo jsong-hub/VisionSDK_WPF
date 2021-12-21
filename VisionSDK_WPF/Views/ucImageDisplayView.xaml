@@ -25,16 +25,30 @@
                             Style="{StaticResource MaterialDesignIconForegroundButton}"
                             DockPanel.Dock="Right"
                             ToolTip="Save File"
+                            Margin="0,0,5,0"
                             Command="{Binding SaveFileCommand}"
                             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
                             <materialDesign:PackIcon
                                 Kind="ContentSave" />
                         </Button>
                     </DockPanel>
-                    <TextBlock
-                        VerticalAlignment="Center"
-                        Margin="16 0 0 0"
-                        Text="{Binding SelectedImageName}" />
+                    <DockPanel LastChildFill="False">
+                        <TextBlock
+                            DockPanel.Dock="Left"
+                            VerticalAlignment="Center"
+                            Margin="20 0 0 0"
+                            FontSize="18"
+                            Text="{Binding SelectedImageName}" />
+                        <Button
+                            DockPanel.Dock="Right"
+                            Style="{StaticResource MaterialDesignFlatMidBgButton}"
+                            FontSize="14"
+                            Width="100"
+                            ToolTip="Overwrite the original Image."
+                            Content="OVERWRITE"
+                            Command="{Binding OverwriteImageCommand}"
+                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
+                    </DockPanel>
                 </StackPanel>
             </materialDesign:ColorZone>
         </Grid>
@@ -49,7 +63,9 @@
         <Grid Row="2">
             <DockPanel LastChildFill="False">
                 <TextBlock Text="{Binding TargetImageResolution}" DockPanel.Dock="Right"
-                           FontSize="16" Padding="5"/>
+                           Width="200" FontSize="16" Padding="5" />
+                <TextBlock Text="{Binding TargetImagePixelFormat}" DockPanel.Dock="Right"
+                           Width="200" FontSize="16" Padding="5" />
             </DockPanel>
         </Grid>
     </Grid>

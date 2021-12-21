@@ -50,8 +50,8 @@
                     <TextBlock
                         VerticalAlignment="Bottom"
                         Margin="16 8 0 0"
-                        FontSize="15"
-                        Text="File Path" />
+                        FontSize="18"
+                        Text="{Binding SelectedFolderPath}" />
                 </StackPanel>
             </materialDesign:ColorZone>
         </Grid>

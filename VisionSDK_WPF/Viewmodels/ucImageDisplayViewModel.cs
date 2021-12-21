@@ -29,13 +29,16 @@ namespace VisionSDK_WPF.Viewmodels
             if (TargetImageModel.IsApplied)
             {
                 SelectedImageSource = DataConverter.BitmapToImageSource(TargetImageModel.ProcessedBitmap);
-                TargetImageResolution = TargetImageModel.ProcessedBitmap.Width + "x" + TargetImageModel.ProcessedBitmap.Height;
+                TargetImageResolution 
+                    = TargetImageModel.ProcessedBitmap.Width + "x" + TargetImageModel.ProcessedBitmap.Height;
+                TargetImagePixelFormat = TargetImageModel.ProcessedBitmap.PixelFormat.ToString();
             }
             else
             {
                 SelectedImageSource = DataConverter.BitmapToImageSource(TargetImageModel.OriginBitmap);
                 TargetImageResolution =
                     TargetImageModel.OriginBitmap.Width + "x" + TargetImageModel.OriginBitmap.Height;
+                TargetImagePixelFormat = TargetImageModel.OriginBitmap.PixelFormat.ToString();
             }
             SelectedImageSource 
                 = DataConverter.BitmapToImageSource(TargetImageModel.IsApplied ? TargetImageModel.ProcessedBitmap : TargetImageModel.OriginBitmap);
@@ -54,7 +57,7 @@ namespace VisionSDK_WPF.Viewmodels
             }
         }
 
-        private string _selectedImageName;
+        private string _selectedImageName = "Image Name";
 
         public string SelectedImageName
         {
@@ -78,12 +81,31 @@ namespace VisionSDK_WPF.Viewmodels
             }
         }
 
+        private string _targetImagePixelFormat;
+
+        public string TargetImagePixelFormat
+        {
+            get => _targetImagePixelFormat;
+            set
+            {
+                _targetImagePixelFormat = value;
+                OnPropertyChanged(nameof(TargetImagePixelFormat));
+            }
+        }
+
+        private void SetDisplayImageProperties()
+        {
+
+        }
+
+
         private void SetSelectedImageInObjectManager()
         {
             
         }
 
         public ICommand SaveFileCommand => new RelayCommand(SaveFile);
+        public ICommand OverwriteImageCommand => new RelayCommand(OverwriteImage);
 
         private void SaveFile(object o)
         {
@@ -105,6 +127,14 @@ namespace VisionSDK_WPF.Viewmodels
             else
             {
                 MessageBox.Show("Any processing did not applied.");
+            }
+        }
+        
+        private void OverwriteImage(object o)
+        {
+            if (TargetImageModel.IsApplied)
+            {
+                GSingleton<ObjectManager>.Instance().TargetImageModel.OriginBitmap = TargetImageModel.ProcessedBitmap;
             }
         }
     }
