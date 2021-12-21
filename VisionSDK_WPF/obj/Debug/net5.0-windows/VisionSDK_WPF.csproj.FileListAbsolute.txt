@@ -75,3 +75,13 @@ C:\Users\song\RiderProjects\VisionSDK_WPF\VisionSDK_WPF\bin\Debug\net5.0-windows
 C:\Users\song\RiderProjects\VisionSDK_WPF\VisionSDK_WPF\bin\Debug\net5.0-windows\Accord.Math.dll
 C:\Users\song\RiderProjects\VisionSDK_WPF\VisionSDK_WPF\bin\Debug\net5.0-windows\Accord.Statistics.dll
 C:\Users\song\RiderProjects\VisionSDK_WPF\VisionSDK_WPF\obj\Debug\net5.0-windows\VisionSDK_WPF_Content.g.cs
+D:\Sources\RiderProjects\VisionSDK_WPF\VisionSDK_WPF\bin\Debug\net5.0-windows\OpenCvSharp.Extensions.dll
+D:\Sources\RiderProjects\VisionSDK_WPF\VisionSDK_WPF\bin\Debug\net5.0-windows\OpenCvSharp.dll
+D:\Sources\RiderProjects\VisionSDK_WPF\VisionSDK_WPF\bin\Debug\net5.0-windows\OpenCvSharp.WpfExtensions.dll
+D:\Sources\RiderProjects\VisionSDK_WPF\VisionSDK_WPF\bin\Debug\net5.0-windows\System.Drawing.Common.dll
+D:\Sources\RiderProjects\VisionSDK_WPF\VisionSDK_WPF\bin\Debug\net5.0-windows\runtimes\win-x64\native\OpenCvSharpExtern.dll
+D:\Sources\RiderProjects\VisionSDK_WPF\VisionSDK_WPF\bin\Debug\net5.0-windows\runtimes\win-x64\native\opencv_videoio_ffmpeg453_64.dll
+D:\Sources\RiderProjects\VisionSDK_WPF\VisionSDK_WPF\bin\Debug\net5.0-windows\runtimes\win-x86\native\OpenCvSharpExtern.dll
+D:\Sources\RiderProjects\VisionSDK_WPF\VisionSDK_WPF\bin\Debug\net5.0-windows\runtimes\win-x86\native\opencv_videoio_ffmpeg453.dll
+D:\Sources\RiderProjects\VisionSDK_WPF\VisionSDK_WPF\bin\Debug\net5.0-windows\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+D:\Sources\RiderProjects\VisionSDK_WPF\VisionSDK_WPF\bin\Debug\net5.0-windows\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll

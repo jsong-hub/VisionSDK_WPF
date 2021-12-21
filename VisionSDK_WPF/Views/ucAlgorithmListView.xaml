@@ -34,7 +34,7 @@
         </Grid>
         <Grid Row="1">
             <DockPanel>
-                <TextBlock Text="Algorithm List" FontSize="20" Padding="10" DockPanel.Dock="Top" />
+                <TextBlock Text="Algorithm List" FontSize="18" Padding="10" DockPanel.Dock="Top" />
                 <ScrollViewer materialDesign:ScrollViewerAssist.IsAutoHideEnabled="True"
                               CanContentScroll="True">
                     <ListView
@@ -46,7 +46,7 @@
         </Grid>
         <Grid Row="2">
             <DockPanel>
-                <TextBlock Text="Properties" FontSize="20" Padding="10" />
+                <TextBlock Text="Properties" FontSize="18" Padding="10" />
                 <ScrollViewer materialDesign:ScrollViewerAssist.IsAutoHideEnabled="True"
                               CanContentScroll="True">
                 </ScrollViewer>

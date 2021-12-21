@@ -34,7 +34,19 @@ namespace VisionSDK_WPF.Viewmodels
             }
         }
 
-        public int _selectedIndex;
+        private string _selectedFolderPath = "Folder Path";
+
+        public string SelectedFolderPath
+        {
+            get => _selectedFolderPath;
+            set
+            {
+                _selectedFolderPath = value;
+                OnPropertyChanged(nameof(SelectedFolderPath));
+            }
+        }
+
+        private int _selectedIndex;
 
         public int SelectedIndex
         {
@@ -80,11 +92,8 @@ namespace VisionSDK_WPF.Viewmodels
                 LoadedImageList.Add(fileName);
                 if (Regex.IsMatch(fileName, @".jpg|.png|.bmp|.JPG|.PNG|.BMP|.JPEG|.jpeg$"))
                 {
-                    Bitmap src = new Bitmap(fileName);
-
                     ImageListModel data = new ImageListModel();
                     data.Format = Path.GetExtension(fileName);
-                    data.Resolution = src.Width + "x" + src.Height;
                     data.Name = Path.GetFileNameWithoutExtension(fileName);
                     data.Size = FormatBytes(new FileInfo(fileName).Length);
                     
@@ -100,11 +109,8 @@ namespace VisionSDK_WPF.Viewmodels
             LoadedImageList.Add(filePath);
             if (Regex.IsMatch(filePath, @".jpg|.png|.bmp|.JPG|.PNG|.BMP|.JPEG|.jpeg$"))
             {
-                Bitmap src = new Bitmap(filePath);
-
                 ImageListModel data = new ImageListModel();
                 data.Format = Path.GetExtension(filePath);
-                data.Resolution = src.Width + "x" + src.Height;
                 data.Name = Path.GetFileNameWithoutExtension(filePath);
                 data.Size = FormatBytes(new FileInfo(filePath).Length);
 
@@ -114,11 +120,10 @@ namespace VisionSDK_WPF.Viewmodels
 
         private void ChangeSelectedItemPath()
         {
-            // GSingleton<ObjectManager>.Instance().SelectedImageModel.SelectedImagePath 
-            //     = LoadedImageList[SelectedIndex];
+            GSingleton<ObjectManager>.Instance().TargetImageModel.IsApplied = false;
             GSingleton<ObjectManager>.Instance().TargetImageModel.OriginBitmap 
                 = new Bitmap(LoadedImageList[SelectedIndex]);
-            GSingleton<ObjectManager>.Instance().TargetImageModel.IsApplied = false;
+            GSingleton<ObjectManager>.Instance().TargetImageModel.SelectedImagePath = LoadedImageList[SelectedIndex];
         }
 
         public string FormatBytes(long bytes)

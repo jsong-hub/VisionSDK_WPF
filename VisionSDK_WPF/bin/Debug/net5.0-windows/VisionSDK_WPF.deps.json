@@ -8,63 +8,13 @@
     ".NETCoreApp,Version=v5.0": {
       "VisionSDK_WPF/1.0.0": {
         "dependencies": {
-          "Accord": "3.8.2-alpha",
-          "Accord.Imaging": "3.8.2-alpha",
-          "Accord.Math": "3.8.2-alpha",
-          "Accord.Statistics": "3.8.2-alpha",
           "MaterialDesignColors": "2.0.5-ci16-ci16",
-          "MaterialDesignThemes": "4.4.0-ci16-ci16"
+          "MaterialDesignThemes": "4.4.0-ci16-ci16",
+          "OpenCvSharp4": "4.5.3.20211207",
+          "OpenCvSharp4.Windows": "4.5.3.20211207"
         },
         "runtime": {
           "VisionSDK_WPF.dll": {}
-        }
-      },
-      "Accord/3.8.2-alpha": {
-        "runtime": {
-          "lib/netstandard2.0/Accord.dll": {
-            "assemblyVersion": "3.8.2.0",
-            "fileVersion": "3.8.2.6153"
-          }
-        }
-      },
-      "Accord.Imaging/3.8.2-alpha": {
-        "dependencies": {
-          "Accord": "3.8.2-alpha",
-          "Accord.Math": "3.8.2-alpha",
-          "Accord.Statistics": "3.8.2-alpha"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Accord.Imaging.dll": {
-            "assemblyVersion": "3.8.2.0",
-            "fileVersion": "3.8.2.6153"
-          }
-        }
-      },
-      "Accord.Math/3.8.2-alpha": {
-        "dependencies": {
-          "Accord": "3.8.2-alpha"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Accord.Math.Core.dll": {
-            "assemblyVersion": "3.8.2.0",
-            "fileVersion": "3.8.2.6153"
-          },
-          "lib/netstandard2.0/Accord.Math.dll": {
-            "assemblyVersion": "3.8.2.0",
-            "fileVersion": "3.8.2.6153"
-          }
-        }
-      },
-      "Accord.Statistics/3.8.2-alpha": {
-        "dependencies": {
-          "Accord": "3.8.2-alpha",
-          "Accord.Math": "3.8.2-alpha"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Accord.Statistics.dll": {
-            "assemblyVersion": "3.8.2.0",
-            "fileVersion": "3.8.2.6153"
-          }
         }
       },
       "MaterialDesignColors/2.0.5-ci16-ci16": {
@@ -85,7 +35,99 @@
             "fileVersion": "4.4.0.0"
           }
         }
-      }
+      },
+      "Microsoft.NETCore.Platforms/5.0.0": {},
+      "Microsoft.Win32.SystemEvents/5.0.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "5.0.0"
+        }
+      },
+      "OpenCvSharp4/4.5.3.20211207": {
+        "dependencies": {
+          "System.Drawing.Common": "5.0.2",
+          "System.Memory": "4.5.4",
+          "System.Runtime.CompilerServices.Unsafe": "5.0.0"
+        },
+        "runtime": {
+          "lib/netcoreapp2.1/OpenCvSharp.Extensions.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          },
+          "lib/netcoreapp2.1/OpenCvSharp.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "OpenCvSharp4.runtime.win/4.5.3.20211207": {
+        "runtimeTargets": {
+          "runtimes/win-x64/native/OpenCvSharpExtern.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x64/native/opencv_videoio_ffmpeg453_64.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "2021.6.0.0"
+          },
+          "runtimes/win-x86/native/OpenCvSharpExtern.dll": {
+            "rid": "win-x86",
+            "assetType": "native",
+            "fileVersion": "0.0.0.0"
+          },
+          "runtimes/win-x86/native/opencv_videoio_ffmpeg453.dll": {
+            "rid": "win-x86",
+            "assetType": "native",
+            "fileVersion": "2021.6.0.0"
+          }
+        }
+      },
+      "OpenCvSharp4.Windows/4.5.3.20211207": {
+        "dependencies": {
+          "OpenCvSharp4": "4.5.3.20211207",
+          "OpenCvSharp4.WpfExtensions": "4.5.3.20211207",
+          "OpenCvSharp4.runtime.win": "4.5.3.20211207"
+        }
+      },
+      "OpenCvSharp4.WpfExtensions/4.5.3.20211207": {
+        "dependencies": {
+          "OpenCvSharp4": "4.5.3.20211207"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/OpenCvSharp.WpfExtensions.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "System.Drawing.Common/5.0.2": {
+        "dependencies": {
+          "Microsoft.Win32.SystemEvents": "5.0.0"
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/System.Drawing.Common.dll": {
+            "assemblyVersion": "5.0.0.2",
+            "fileVersion": "5.0.421.11614"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/netcoreapp3.0/System.Drawing.Common.dll": {
+            "rid": "unix",
+            "assetType": "runtime",
+            "assemblyVersion": "5.0.0.2",
+            "fileVersion": "5.0.421.11614"
+          },
+          "runtimes/win/lib/netcoreapp3.0/System.Drawing.Common.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "5.0.0.2",
+            "fileVersion": "5.0.421.11614"
+          }
+        }
+      },
+      "System.Memory/4.5.4": {},
+      "System.Runtime.CompilerServices.Unsafe/5.0.0": {}
     }
   },
   "libraries": {
@@ -93,34 +135,6 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
-    },
-    "Accord/3.8.2-alpha": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-g/EKYGdeMKTMJt7XtB65f+RyVW5ALfU1f1T1dpIGXOqzBtaaNK+OGB6pFY9RFrjKPQNUlnKUWF2jwH5knM+X7A==",
-      "path": "accord/3.8.2-alpha",
-      "hashPath": "accord.3.8.2-alpha.nupkg.sha512"
-    },
-    "Accord.Imaging/3.8.2-alpha": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-X59GYUjL73IJPTPN/DN70N6cktGA+GUQZveNiBJKbFbmpRmAq27UevfbZ6XetCjzaB+5qixTKwKmjWsKuYJs6w==",
-      "path": "accord.imaging/3.8.2-alpha",
-      "hashPath": "accord.imaging.3.8.2-alpha.nupkg.sha512"
-    },
-    "Accord.Math/3.8.2-alpha": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-derpraljs7QO7U06DzGu1EHNVN+LGM2oA/z3M/zERSWXGs/BVOjMtUBx5WjdMnKXaM0OJiqZFNus3y3C04/H2w==",
-      "path": "accord.math/3.8.2-alpha",
-      "hashPath": "accord.math.3.8.2-alpha.nupkg.sha512"
-    },
-    "Accord.Statistics/3.8.2-alpha": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-smQUcRwCGM6apaQrnjpc2Fo07k32bZ6W0r4oaUgftpsHMq8uFLUdMOljuyWddTrgjXFD8Lxkvkngb4nd+LpUwg==",
-      "path": "accord.statistics/3.8.2-alpha",
-      "hashPath": "accord.statistics.3.8.2-alpha.nupkg.sha512"
     },
     "MaterialDesignColors/2.0.5-ci16-ci16": {
       "type": "package",
@@ -135,6 +149,69 @@
       "sha512": "sha512-8L/+DUsGb9wvoIyMKyHzgSJCuG7pAdOhAOhH9VbEnx95EY1EyQdTp5I7eUTYzL5Jtd3GMF2Gs6kwLHlhIGib5Q==",
       "path": "materialdesignthemes/4.4.0-ci16-ci16",
       "hashPath": "materialdesignthemes.4.4.0-ci16-ci16.nupkg.sha512"
+    },
+    "Microsoft.NETCore.Platforms/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-VyPlqzH2wavqquTcYpkIIAQ6WdenuKoFN0BdYBbCWsclXacSOHNQn66Gt4z5NBqEYW0FAPm5rlvki9ZiCij5xQ==",
+      "path": "microsoft.netcore.platforms/5.0.0",
+      "hashPath": "microsoft.netcore.platforms.5.0.0.nupkg.sha512"
+    },
+    "Microsoft.Win32.SystemEvents/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Bh6blKG8VAKvXiLe2L+sEsn62nc1Ij34MrNxepD2OCrS5cpCwQa9MeLyhVQPQ/R4Wlzwuy6wMK8hLb11QPDRsQ==",
+      "path": "microsoft.win32.systemevents/5.0.0",
+      "hashPath": "microsoft.win32.systemevents.5.0.0.nupkg.sha512"
+    },
+    "OpenCvSharp4/4.5.3.20211207": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-K17n4kkVUjTt7KfGgsquKbn/CRUixsA1mJJ607rLhW8hfnblfHfYzcW1m5G5u6EZN7liInRdOnNfDsvZ83dAVA==",
+      "path": "opencvsharp4/4.5.3.20211207",
+      "hashPath": "opencvsharp4.4.5.3.20211207.nupkg.sha512"
+    },
+    "OpenCvSharp4.runtime.win/4.5.3.20211207": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-RG22PmEzlq0rdw9NCRs7MoGQPmMyPkPK9d1kZXYjYHTUdhMdyvGFYgB9f1T3wwLXlefP/DDMDKWeCxwInzdalw==",
+      "path": "opencvsharp4.runtime.win/4.5.3.20211207",
+      "hashPath": "opencvsharp4.runtime.win.4.5.3.20211207.nupkg.sha512"
+    },
+    "OpenCvSharp4.Windows/4.5.3.20211207": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-E9vkYezrndRx3q60BJ56ahYIekDXvckUTCTMkYYvgiHs1lKmr1MgUNuIET6osDsVppXCTJkAo0JzDbrTu8HqOw==",
+      "path": "opencvsharp4.windows/4.5.3.20211207",
+      "hashPath": "opencvsharp4.windows.4.5.3.20211207.nupkg.sha512"
+    },
+    "OpenCvSharp4.WpfExtensions/4.5.3.20211207": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-PQ9kaU95TwA92n+SoqcLL7DmhnXqGSoqki3mRipk5Br/pO/iDy8p7ym6cVirYhj3W0GEclJGtnygNb4e8eepvQ==",
+      "path": "opencvsharp4.wpfextensions/4.5.3.20211207",
+      "hashPath": "opencvsharp4.wpfextensions.4.5.3.20211207.nupkg.sha512"
+    },
+    "System.Drawing.Common/5.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rvr/M1WPf24ljpvvrVd74+NdjRUJu1bBkspkZcnzSZnmAUQWSvanlQ0k/hVHk+cHufZbZfu7vOh/vYc0q5Uu/A==",
+      "path": "system.drawing.common/5.0.2",
+      "hashPath": "system.drawing.common.5.0.2.nupkg.sha512"
+    },
+    "System.Memory/4.5.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-1MbJTHS1lZ4bS4FmsJjnuGJOu88ZzTT2rLvrhW7Ygic+pC0NWA+3hgAen0HRdsocuQXCkUTdFn9yHJJhsijDXw==",
+      "path": "system.memory/4.5.4",
+      "hashPath": "system.memory.4.5.4.nupkg.sha512"
+    },
+    "System.Runtime.CompilerServices.Unsafe/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ZD9TMpsmYJLrxbbmdvhwt9YEgG5WntEnZ/d1eH8JBX9LBp+Ju8BSBhUGbZMNVHHomWo2KVImJhTDl2hIgw/6MA==",
+      "path": "system.runtime.compilerservices.unsafe/5.0.0",
+      "hashPath": "system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512"
     }
   }
 }

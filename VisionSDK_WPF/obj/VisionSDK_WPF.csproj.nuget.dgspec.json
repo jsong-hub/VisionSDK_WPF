@@ -1,28 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\song\\RiderProjects\\VisionSDK_WPF\\VisionSDK_WPF\\VisionSDK_WPF.csproj": {}
+    "D:\\Sources\\RiderProjects\\VisionSDK_WPF\\VisionSDK_WPF\\VisionSDK_WPF.csproj": {}
   },
   "projects": {
-    "C:\\Users\\song\\RiderProjects\\VisionSDK_WPF\\VisionSDK_WPF\\VisionSDK_WPF.csproj": {
+    "D:\\Sources\\RiderProjects\\VisionSDK_WPF\\VisionSDK_WPF\\VisionSDK_WPF.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\song\\RiderProjects\\VisionSDK_WPF\\VisionSDK_WPF\\VisionSDK_WPF.csproj",
+        "projectUniqueName": "D:\\Sources\\RiderProjects\\VisionSDK_WPF\\VisionSDK_WPF\\VisionSDK_WPF.csproj",
         "projectName": "VisionSDK_WPF",
-        "projectPath": "C:\\Users\\song\\RiderProjects\\VisionSDK_WPF\\VisionSDK_WPF\\VisionSDK_WPF.csproj",
-        "packagesPath": "C:\\Users\\song\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\song\\RiderProjects\\VisionSDK_WPF\\VisionSDK_WPF\\obj\\",
+        "projectPath": "D:\\Sources\\RiderProjects\\VisionSDK_WPF\\VisionSDK_WPF\\VisionSDK_WPF.csproj",
+        "packagesPath": "C:\\Users\\js.song_laservall\\.nuget\\packages\\",
+        "outputPath": "D:\\Sources\\RiderProjects\\VisionSDK_WPF\\VisionSDK_WPF\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\song\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\js.song_laservall\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0-windows"
@@ -47,22 +40,6 @@
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
           "dependencies": {
-            "Accord": {
-              "target": "Package",
-              "version": "[3.8.2-alpha, )"
-            },
-            "Accord.Imaging": {
-              "target": "Package",
-              "version": "[3.8.2-alpha, )"
-            },
-            "Accord.Math": {
-              "target": "Package",
-              "version": "[3.8.2-alpha, )"
-            },
-            "Accord.Statistics": {
-              "target": "Package",
-              "version": "[3.8.2-alpha, )"
-            },
             "MaterialDesignColors": {
               "target": "Package",
               "version": "[2.0.5-ci16-ci16, )"
@@ -70,6 +47,14 @@
             "MaterialDesignThemes": {
               "target": "Package",
               "version": "[4.4.0-ci16-ci16, )"
+            },
+            "OpenCvSharp4": {
+              "target": "Package",
+              "version": "[4.5.3.20211207, )"
+            },
+            "OpenCvSharp4.Windows": {
+              "target": "Package",
+              "version": "[4.5.3.20211207, )"
             }
           },
           "imports": [
@@ -90,7 +75,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
